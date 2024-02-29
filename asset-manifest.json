@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.d2c88e3e.css",
-    "main.js": "/static/js/main.bfba6053.js",
-    "static/js/453.ed3810f9.chunk.js": "/static/js/453.ed3810f9.chunk.js",
-    "index.html": "/index.html",
-    "main.d2c88e3e.css.map": "/static/css/main.d2c88e3e.css.map",
-    "main.bfba6053.js.map": "/static/js/main.bfba6053.js.map",
-    "453.ed3810f9.chunk.js.map": "/static/js/453.ed3810f9.chunk.js.map"
+    "main.css": "/associations-party-game-react/static/css/main.d2c88e3e.css",
+    "main.js": "/associations-party-game-react/static/js/main.8c185dfd.js",
+    "static/js/453.ed3810f9.chunk.js": "/associations-party-game-react/static/js/453.ed3810f9.chunk.js",
+    "index.html": "/associations-party-game-react/index.html",
+    "main.d2c88e3e.css.map": "/associations-party-game-react/static/css/main.d2c88e3e.css.map",
+    "main.8c185dfd.js.map": "/associations-party-game-react/static/js/main.8c185dfd.js.map",
+    "453.ed3810f9.chunk.js.map": "/associations-party-game-react/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d2c88e3e.css",
-    "static/js/main.bfba6053.js"
+    "static/js/main.8c185dfd.js"
   ]
 }
