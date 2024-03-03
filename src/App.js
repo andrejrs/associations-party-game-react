@@ -13,7 +13,7 @@ import Header from './components/Header'; // Pretpostavljamo da je Header u fold
 import 'bootstrap/dist/css/bootstrap.css';
 
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
 } from "react-router-dom";

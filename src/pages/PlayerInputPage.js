@@ -25,7 +25,7 @@ const PlayerInputPage = () => {
       dispatch(addPlayer(player.trim()));
     });
 
-    navigate('/terms');
+    navigate('/teams');
   };
 
   return (
