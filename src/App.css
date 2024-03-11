@@ -58,3 +58,9 @@ input {
   align-items: center;
   justify-content: center;
 }
+
+.photo {
+  height: 256px;
+  width: 256px;
+  margin-bottom: 8px;
+}

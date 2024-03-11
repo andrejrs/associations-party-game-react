@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setNumberOfTeams, setnumberOfTermsPerPlayer, setShowRound } from '../features/teams/teamsSlice';
+import { setNumberOfTeams, setnumberOfTermsPerPlayer, setShowRound, setSourceOfTerms } from '../features/teams/teamsSlice';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import { SourceType } from '../Enums';
 
 const TeamSetupPage = () => {
   const [numberOfTeams, setNumberOfTeamsLocal] = useState(2);
   const [numberOfTermsPerPlayer, setnumberOfTermsPerPlayerLocal] = useState(1);
+  const [source, setSource] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -35,7 +37,13 @@ const TeamSetupPage = () => {
   const handleSubmit = () => {
     dispatch(setNumberOfTeams(numberOfTeams));
     dispatch(setnumberOfTermsPerPlayer(numberOfTermsPerPlayer));
+    dispatch(setSourceOfTerms(source));
     navigate('/players');
+  };
+
+  // Function to handle option change
+  const handleOptionChange = (changeEvent) => {
+    setSource(changeEvent.target.value);
   };
 
   return (
@@ -71,6 +79,16 @@ const TeamSetupPage = () => {
             +
           </Button>
         </InputGroup>
+      </div>
+      <div className="mb-3">
+        <Form.Check type={'radio'} id={`check-api-radio1`}>
+          <Form.Check.Input type={'radio'} name="group1" value={SourceType.LOCAL} onChange={handleOptionChange} />
+          <Form.Check.Label>{`Use local terms`}</Form.Check.Label>
+        </Form.Check>
+        <Form.Check type={'radio'} id={`check-api-radio`}>
+          <Form.Check.Input type={'radio'} name="group1" value={SourceType.SELF} onChange={handleOptionChange} />
+          <Form.Check.Label>{`You enter the terms yourself`}</Form.Check.Label>
+        </Form.Check>
       </div>
       <Button variant="primary" onClick={handleSubmit} size="lg">Next</Button>
     </div>

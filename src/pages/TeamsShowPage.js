@@ -3,12 +3,13 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
+import { SourceType } from '../Enums';
 
 const TeamsShowPage = () => {
   const players = useSelector(state => state.teams.players);
   const numberOfTeams = useSelector(state => state.teams.numberOfTeams);
+  const sourceOfTerms = useSelector(state => state.teams.sourceOfTerms);
   const navigate = useNavigate();
-
   const divideArrayIntoNParts = (originalArray, numberOfParts) => {
     const newArray = [];
     const partSize = Math.ceil(originalArray.length / numberOfParts);
@@ -37,7 +38,11 @@ const TeamsShowPage = () => {
   const teams = divideArrayIntoNParts(shuffleArray([...players]), numberOfTeams);
 
   const handleNext = () => {
-    navigate('/terms');
+    if (sourceOfTerms === SourceType.LOCAL) {
+      navigate('/game');
+    } else {
+      navigate('/terms');
+    }
   };
 
   return (
@@ -45,10 +50,10 @@ const TeamsShowPage = () => {
       <h1>Teams</h1>
       <ul>
         {teams.map((team, index) => (
-          <ListGroup as="ul" className='mb-4'>
+          <ListGroup as="ul" className='mb-4' key={index}>
             <ListGroup.Item as="li" active>Players of Team {index+1}</ListGroup.Item>
             {team.map((team1, index1) => (
-            <ListGroup.Item as="li">{team1}</ListGroup.Item>
+            <ListGroup.Item as="li" key={index+'|'+index1}>{team1}</ListGroup.Item>
           ))}
           </ListGroup>
         ))}

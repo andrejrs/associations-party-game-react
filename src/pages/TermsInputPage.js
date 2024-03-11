@@ -23,9 +23,9 @@ const TermsInputPage = () => {
 
     if (currentPlayerIndex < players.length - 1) {
       setCurrentPlayerIndex(currentPlayerIndex + 1);
-      setTerms(Array(numberOfTermsPerPlayer).fill('')); // Resetujemo pojmove za sledećeg igrača
+      setTerms(Array(numberOfTermsPerPlayer).fill('')); // We reset the terms for the next player
     } else {
-        navigate('/game'); // Svi pojmovi uneti, počinje igra
+        navigate('/game'); // All terms entered, game begins
     }
   };
 

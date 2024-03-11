@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { updateScore, nextTeam, nextRound, selectCurrentTerms, setShowRound } from '../features/teams/teamsSlice';
+import { updateScore, nextTeam, nextRound, selectCurrentTerms, setShowRound, startGame } from '../features/teams/teamsSlice';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
 
@@ -23,6 +23,7 @@ const GamePage = () => {
    */
   useEffect(() => {
     dispatch(setShowRound(true));
+    dispatch(startGame());
   }, [dispatch]);
 
   /**
@@ -69,9 +70,9 @@ const GamePage = () => {
       setCurrentTermIndex(currentTermIndex + 1);
     } else {
       dispatch(nextRound());
-      setCurrentTermIndex(0); // Resetujemo indeks pojma
-      setTimeLeft(-1); // Resetujemo tajmer
-      setTimerActive(false); // Zaustavljamo tajmer
+      setCurrentTermIndex(0); // We reset the term index
+      setTimeLeft(-1); // We reset the timer
+      setTimerActive(false); // We stop the timer
     }
   };
 
@@ -88,7 +89,10 @@ const GamePage = () => {
       ) : (
         <div className='colored'>
           <p>Time left: <Badge bg="secondary">{timeLeft}</Badge> seconds</p>
-          <h1><Badge bg="primary" className='fs-1'>{currentTerms[currentTermIndex]}</Badge></h1>
+          {currentTerms[currentTermIndex].image ? (
+            <img className="photo" src={currentTerms[currentTermIndex].image } alt={currentTerms[currentTermIndex].term} />
+          ) : ''}
+          <h1><Badge bg="primary" className='fs-1'>{currentTerms[currentTermIndex].term}</Badge></h1>
           <Button variant="success" onClick={handleCorrect} size="lg">Correct</Button>
         </div>
       )}

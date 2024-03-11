@@ -31,9 +31,8 @@ const PlayerInputPage = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
       {players.map((player, index) => (
-        <div className='mb-4'>
+        <div className='mb-4' key={index}>
           <Form.Control
-              key={index}
               type="text"
               value={player}
               onChange={(e) => handlePlayerChange(index, e.target.value)}
